@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>내 자녀 맞춤 자기주도 템플릿</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400;1,600&family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B8975A;--gold-d:#8B6F3A;
+  --ink:#1A1714;--ink2:#2E2A25;--ink4:#9E9890;
+  --cream:#FEFCF8;--cream2:#F8F4EC;--cream3:#EDE7D9;
+  --terra:#B84C28;--teal:#1B6458;--violet:#3D3280;
+  --serif-en:'Cormorant Garamond',Georgia,serif;
+  --serif-kr:'Noto Serif KR',serif;
+  --sans:'Noto Sans KR',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased}
+.wrap{max-width:700px;margin:0 auto;padding:4rem 2rem 7rem}
+.hd{text-align:center;margin-bottom:3.5rem}
+.hd-orn{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:1.5rem}
+.hd-orn-line{height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hd-orn-line.r{background:linear-gradient(90deg,var(--gold),transparent)}
+.hd-orn-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.hd-orn-dot{width:3px;height:3px;background:var(--gold-d);border-radius:50%;flex-shrink:0}
+.hd-eyebrow{font-family:var(--serif-en);font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-style:italic}
+.hd-title{font-family:var(--serif-en);font-size:clamp(34px,7vw,54px);font-weight:600;color:var(--ink);line-height:1.1;margin-bottom:.4rem}
+.hd-title-kr{font-family:var(--serif-kr);font-size:clamp(18px,3.5vw,26px);font-weight:600;color:var(--ink2);letter-spacing:.02em;margin-bottom:1.25rem}
+.hd-sub{font-size:13px;font-weight:300;color:var(--ink4);line-height:1.9;max-width:400px;margin:0 auto 1rem}
+.info-row{display:grid;grid-template-columns:1fr 160px;gap:12px;margin-bottom:2.5rem}
+.info-field{position:relative;background:#fff;border:1px solid var(--cream3);border-radius:2px;padding:14px 18px 10px;transition:border-color .2s}
+.info-field::after{content:'';position:absolute;bottom:-1px;left:50%;width:0;height:1px;background:var(--gold);transform:translateX(-50%);transition:width .3s}
+.info-field:focus-within::after{width:100%}
+.info-label{font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;display:block}
+.info-input{width:100%;border:none;outline:none;font-family:var(--serif-kr);font-size:15px;font-weight:600;color:var(--ink);background:transparent}
+.info-input::placeholder{font-family:var(--sans);font-weight:300;font-size:13px;color:var(--cream3)}
+.prog-wrap{margin-bottom:3rem;display:flex;align-items:center;gap:14px}
+.prog-track{flex:1;height:1px;background:var(--cream3);position:relative}
+.prog-fill{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold));transition:width .6s;width:0%}
+.prog-dots{display:flex;gap:6px}
+.prog-dot{width:6px;height:6px;border-radius:50%;border:1px solid var(--cream3);transition:all .3s;flex-shrink:0}
+.prog-dot.done{background:var(--gold);border-color:var(--gold);transform:scale(1.1)}
+.prog-pct{font-family:var(--serif-en);font-size:12px;font-style:italic;color:var(--gold);white-space:nowrap;min-width:36px;text-align:right}
+.card{margin-bottom:1.5rem;background:#fff;border:1px solid var(--cream3);border-radius:2px;overflow:hidden;box-shadow:0 2px 24px rgba(26,23,20,.04);transition:box-shadow .3s}
+.card:hover{box-shadow:0 8px 40px rgba(26,23,20,.08)}
+.card-hd{display:flex;align-items:stretch;border-bottom:1px solid var(--cream3)}
+.card-accent{width:4px;flex-shrink:0}
+.card-1 .card-accent{background:linear-gradient(180deg,var(--terra),#D4623A)}
+.card-2 .card-accent{background:linear-gradient(180deg,var(--teal),#248070)}
+.card-3 .card-accent{background:linear-gradient(180deg,var(--violet),#5248A8)}
+.card-hd-inner{flex:1;display:flex;align-items:center;gap:16px;padding:1.1rem 1.4rem}
+.card-step-num{font-family:var(--serif-en);font-size:32px;font-weight:600;font-style:italic;line-height:1;flex-shrink:0}
+.card-1 .card-step-num{color:var(--terra);opacity:.25}
+.card-2 .card-step-num{color:var(--teal);opacity:.25}
+.card-3 .card-step-num{color:var(--violet);opacity:.25}
+.card-meta{flex:1}
+.card-badge{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:4px}
+.card-1 .card-badge{color:var(--terra)}
+.card-2 .card-badge{color:var(--teal)}
+.card-3 .card-badge{color:var(--violet)}
+.card-title{font-family:var(--serif-kr);font-size:16px;font-weight:700;color:var(--ink);line-height:1.4}
+.card-desc{font-size:11.5px;font-weight:300;color:var(--ink4);margin-top:3px}
+.q-block{padding:1.2rem 1.4rem 1.2rem calc(1.4rem + 4px);border-bottom:1px solid var(--cream2)}
+.q-block:last-child{border-bottom:none}
+.q-label{display:flex;gap:10px;align-items:flex-start;margin-bottom:.75rem}
+.q-num{font-family:var(--serif-en);font-size:11px;font-style:italic;color:var(--gold);flex-shrink:0;margin-top:1px}
+.q-text{font-size:13px;font-weight:500;color:var(--ink2);line-height:1.7}
+.q-text em{font-style:normal;font-weight:700;color:var(--ink)}
+.q-text small{display:block;font-size:11px;font-weight:300;color:var(--ink4);margin-top:2px}
+textarea{width:100%;min-height:76px;border:1px solid var(--cream3);border-radius:2px;padding:12px 14px;font-family:var(--sans);font-size:13.5px;line-height:1.8;color:var(--ink);background:var(--cream2);resize:vertical;outline:none;transition:border-color .2s,background .2s}
+textarea:focus{background:#fff}
+.card-1 textarea:focus{border-color:rgba(184,76,40,.35)}
+.card-2 textarea:focus{border-color:rgba(27,100,88,.35)}
+.card-3 textarea:focus{border-color:rgba(61,50,128,.35)}
+textarea::placeholder{color:var(--cream3);font-weight:300;font-size:13px}
+.final-card{margin-bottom:2.5rem;background:var(--ink);border-radius:2px;overflow:hidden;box-shadow:0 8px 40px rgba(26,23,20,.18);position:relative}
+.final-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.final-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold-d),transparent)}
+.fc-inner{padding:1.75rem}
+.fc-orn{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem}
+.fc-orn-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-d),transparent)}
+.fc-orn-line.r{background:linear-gradient(90deg,transparent,var(--gold-d))}
+.fc-orn-diamond{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+.fc-eyebrow{font-family:var(--serif-en);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-style:italic;margin-bottom:.5rem;text-align:center}
+.fc-title{font-family:var(--serif-kr);font-size:17px;font-weight:700;color:#fff;line-height:1.45;margin-bottom:1.1rem;text-align:center}
+.fc-title span{color:var(--gold)}
+.final-card textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;min-height:64px}
+.final-card textarea::placeholder{color:rgba(255,255,255,.2)}
+.final-card textarea:focus{background:rgba(255,255,255,.1);border-color:rgba(184,151,90,.5)}
+.btn-row{display:flex;gap:12px;justify-content:center;margin-bottom:2.5rem}
+.btn-pdf{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:#fff;border:none;border-radius:2px;padding:14px 32px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.06em;cursor:pointer;transition:background .2s}
+.btn-pdf:hover{background:#2E2A25}
+.btn-pdf svg{stroke:var(--gold);flex-shrink:0}
+.btn-pdf-accent{color:var(--gold);font-weight:700}
+.btn-clear{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink4);border:1px solid var(--cream3);border-radius:2px;padding:14px 22px;font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .2s}
+.btn-clear:hover{border-color:var(--ink4);color:var(--ink2)}
+.footer{text-align:center}
+.footer-orn{display:flex;align-items:center;gap:12px;margin-bottom:1rem}
+.footer-orn-line{flex:1;height:1px;background:var(--cream3)}
+.footer-orn-icon{font-family:var(--serif-en);font-style:italic;color:var(--gold);font-size:14px}
+.footer-hint{font-size:10.5px;color:var(--ink4);line-height:1.7}
+.footer-hint b{color:var(--ink);font-weight:500}
+@media print{
+  @page{size:A4;margin:14mm 18mm 16mm}
+  body{background:#fff!important}
+  .wrap{padding:0;max-width:100%}
+  .btn-row,.prog-wrap,.footer-hint{display:none!important}
+  .hd{margin-bottom:1.8rem}
+  .card{break-inside:avoid;page-break-inside:avoid;box-shadow:none!important;border:1pt solid #ddd!important;margin-bottom:.8rem}
+  .card-accent{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  textarea{background:#f9f7f3!important;border:1pt solid #ddd!important;color:#000!important;min-height:52pt;font-size:10pt}
+  .final-card{background:#1A1714!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none!important;break-inside:avoid}
+  .final-card textarea{background:rgba(255,255,255,.08)!important;border:1pt solid rgba(255,255,255,.2)!important;color:#fff!important}
+  .fc-title,.fc-title span,.fc-eyebrow,.card-badge,.q-num,.hd-eyebrow,.hd-orn-diamond,.fc-orn-diamond{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd">
+    <div class="hd-orn">
+      <div class="hd-orn-line"></div><div class="hd-orn-dot"></div>
+      <div class="hd-orn-diamond"></div><div class="hd-orn-dot"></div>
+      <div class="hd-orn-line r"></div>
+    </div>
+    <div class="hd-eyebrow">AI 시대 부모 특강</div>
+    <div class="hd-title">My Child's Guide</div>
+    <div class="hd-title-kr">내 자녀 맞춤 자기주도 템플릿</div>
+    <div class="hd-sub">강의에서 얻은 통찰을 세 단계로 정리해보세요.<br>오늘 집에 가서 바로 아이와 함께 나눌 수 있습니다.</div>
+  </div>
+
+  <div class="info-row">
+    <div class="info-field">
+      <label class="info-label" for="childName">Child's Name · 자녀 이름</label>
+      <input class="info-input" id="childName" type="text" placeholder="자녀 이름을 입력하세요">
+    </div>
+    <div class="info-field">
+      <label class="info-label" for="grade">Grade · 학년</label>
+      <input class="info-input" id="grade" type="text" placeholder="예) 초5">
+    </div>
+  </div>
+
+  <div class="prog-wrap">
+    <div class="prog-dots" id="progDots"></div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+    <div class="prog-pct" id="progPct">0%</div>
+  </div>
+
+  <div class="card card-1">
+    <div class="card-hd">
+      <div class="card-accent"></div>
+      <div class="card-hd-inner">
+        <div class="card-step-num">01</div>
+        <div class="card-meta">
+          <div class="card-badge">Step 1 · 생각디톡스</div>
+          <div class="card-title">내가 갖고 있던 오해와 불안 내려놓기</div>
+          <div class="card-desc">믿었던 것을 점검해야 새 방향이 보입니다</div>
+        </div>
+      </div>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 1 —</div>
+        <div class="q-text">지금까지 내가 아이에 대해 갖고 있던 <em>오해나 불안</em>은 무엇이었나요?<small>오늘 강의에서 발견한 내 오해 번호와 함께 적어보세요</small></div>
+      </div>
+      <textarea id="q1a" placeholder="예) 성적이 좋으면 다 된다고 생각했는데... 오해 1번이 나였습니다."></textarea>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 2 —</div>
+        <div class="q-text">강의를 듣고 나서 <em>바꾸고 싶은 생각</em>은 무엇인가요?</div>
+      </div>
+      <textarea id="q1b" placeholder="예) 성적보다 질문하는 힘을 키워주는 게 더 중요하다는 것을 알게 됐습니다."></textarea>
+    </div>
+  </div>
+
+  <div class="card card-2">
+    <div class="card-hd">
+      <div class="card-accent"></div>
+      <div class="card-hd-inner">
+        <div class="card-step-num">02</div>
+        <div class="card-meta">
+          <div class="card-badge">Step 2 · 진로디톡스</div>
+          <div class="card-title">AI 시대에 아이에게 키워줄 것 찾기</div>
+          <div class="card-desc">공감·질문·연결 — 아이만의 강점을 붙잡습니다</div>
+        </div>
+      </div>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 3 —</div>
+        <div class="q-text">내 아이에게 키워주고 싶은 <em>AI 시대의 핵심 능력</em>은 무엇인가요?</div>
+      </div>
+      <textarea id="q2a" placeholder="예) 남의 감정을 잘 읽고 공감하는 힘 / 스스로 질문을 만드는 힘..."></textarea>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 4 —</div>
+        <div class="q-text">그 능력을 위해 지금 <em>가정에서 바꿀 수 있는 것</em>은 무엇인가요?</div>
+      </div>
+      <textarea id="q2b" placeholder="예) '숙제 다 했어?' 대신 '오늘 가장 재밌었던 게 뭐야?'로 바꾸기..."></textarea>
+    </div>
+  </div>
+
+  <div class="card card-3">
+    <div class="card-hd">
+      <div class="card-accent"></div>
+      <div class="card-hd-inner">
+        <div class="card-step-num">03</div>
+        <div class="card-meta">
+          <div class="card-badge">Step 3 · 학습디톡스</div>
+          <div class="card-title">지금 공부 방식에서 딱 하나만 바꾸기</div>
+          <div class="card-desc">전부 바꾸려 하지 말고, 하나만 골라 시작합니다</div>
+        </div>
+      </div>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 5 —</div>
+        <div class="q-text">지금 아이의 공부 방식에서 <em>바꾸고 싶은 것 한 가지</em>는?</div>
+      </div>
+      <textarea id="q3a" placeholder="예) 정답을 바로 알려주는 것 → 먼저 생각해보게 기다려주기..."></textarea>
+    </div>
+    <div class="q-block">
+      <div class="q-label">
+        <div class="q-num">Q 6 —</div>
+        <div class="q-text">AI 시대에 우리 아이에게 <em>키워주고 싶은 능력 한 가지</em>는?</div>
+      </div>
+      <textarea id="q3b" placeholder="예) AI가 틀렸을 때 알아채는 비판적 사고력..."></textarea>
+    </div>
+  </div>
+
+  <div class="final-card">
+    <div class="fc-inner">
+      <div class="fc-orn">
+        <div class="fc-orn-line"></div>
+        <div class="fc-orn-diamond"></div>
+        <div class="fc-orn-line r"></div>
+      </div>
+      <div class="fc-eyebrow">This Week's Practice</div>
+      <div class="fc-title">이번 주 아이에게 건넬<br><span>질문 한 마디</span></div>
+      <textarea id="qfinal" placeholder="예) &quot;오늘 학교에서 가장 신기했던 게 뭐야?&quot;"></textarea>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-pdf" onclick="savePDF()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      <span>PDF 저장하기&nbsp;</span><span class="btn-pdf-accent">↓</span>
+    </button>
+    <button class="btn-clear" onclick="clearAll()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4"/></svg>
+      초기화
+    </button>
+  </div>
+
+  <div class="footer">
+    <div class="footer-orn">
+      <div class="footer-orn-line"></div>
+      <div class="footer-orn-icon">✦</div>
+      <div class="footer-orn-line"></div>
+    </div>
+    <div class="footer-hint">PDF 저장: <b>PDF 저장하기 버튼</b> 클릭 → 인쇄 창에서 대상을 <b>PDF로 저장</b> 선택 → 저장</div>
+  </div>
+</div>
+
+<script>
+var fields = ['childName','grade','q1a','q1b','q2a','q2b','q3a','q3b','qfinal'];
+
+function updateProgress() {
+  var filled = 0;
+  for (var i = 0; i < fields.length; i++) {
+    var el = document.getElementById(fields[i]);
+    if (el && el.value.trim().length > 0) filled++;
+  }
+  var pct = Math.round((filled / fields.length) * 100);
+  var fill = document.getElementById('progFill');
+  var pctEl = document.getElementById('progPct');
+  if (fill) fill.style.width = pct + '%';
+  if (pctEl) pctEl.textContent = pct + '%';
+  var dots = document.querySelectorAll('.prog-dot');
+  for (var j = 0; j < dots.length; j++) {
+    if (j < filled) dots[j].classList.add('done');
+    else dots[j].classList.remove('done');
+  }
+}
+
+function savePDF() {
+  window.print();
+}
+
+function clearAll() {
+  if (!confirm('작성한 내용을 모두 지울까요?')) return;
+  for (var i = 0; i < fields.length; i++) {
+    var el = document.getElementById(fields[i]);
+    if (el) el.value = '';
+    try { sessionStorage.removeItem('kk_' + fields[i]); } catch(e) {}
+  }
+  updateProgress();
+}
+
+// 점 생성
+var dotsWrap = document.getElementById('progDots');
+if (dotsWrap) {
+  for (var i = 0; i < fields.length; i++) {
+    var d = document.createElement('div');
+    d.className = 'prog-dot';
+    dotsWrap.appendChild(d);
+  }
+}
+
+// 세션 복원 및 이벤트
+for (var i = 0; i < fields.length; i++) {
+  (function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    try {
+      var saved = sessionStorage.getItem('kk_' + id);
+      if (saved) el.value = saved;
+    } catch(e) {}
+    el.addEventListener('input', function() {
+      try { sessionStorage.setItem('kk_' + id, el.value); } catch(e) {}
+      updateProgress();
+    });
+  })(fields[i]);
+}
+
+updateProgress();
+</script>
+</body>
+</html>
