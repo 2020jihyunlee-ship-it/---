@@ -104,18 +104,41 @@ textarea::placeholder{color:var(--cream3);font-weight:300;font-size:13px}
 .footer-hint{font-size:10.5px;color:var(--ink4);line-height:1.7}
 .footer-hint b{color:var(--ink);font-weight:500}
 @media(max-width:480px){
+  /* 헤더 */
   .hd-sub{font-size:13.5px;font-weight:400;color:var(--ink2)}
-  .card-badge{font-size:10px}
-  .card-title{font-size:15px}
+
+  /* 입력 필드 — iOS 줌 방지 (16px 미만이면 자동 확대됨) */
+  .info-input{font-size:16px}
+  .info-input::placeholder{color:#B8B0A4;font-size:14px}
+
+  /* 카드 헤더 */
   .card-step-num{font-size:20px}
   .card-hd-inner{gap:10px;padding:.9rem 1rem}
+  .card-badge{font-size:10px;letter-spacing:.1em}
+  .card-title{font-size:15px}
   .card-desc{font-size:12.5px;font-weight:400;color:var(--ink2)}
+
+  /* 질문 블록 — 패딩 줄여 텍스트 영역 확보 */
+  .q-block{padding:1rem 1rem 1rem calc(1rem + 4px)}
+  .q-num{font-size:12px}
   .q-text{font-size:15px;line-height:1.75;color:var(--ink)}
   .q-text small{font-size:12px;font-weight:400;color:var(--ink2)}
-  .q-num{font-size:12px}
-  textarea{font-size:15px!important;color:var(--ink);background:#fff;border-color:var(--cream3)}
-  textarea::placeholder{font-size:14px;color:#C8C2B8}
+
+  /* textarea — iOS 줌 방지 + 가독성 */
+  textarea{font-size:16px!important;color:var(--ink);background:#fff;border-color:var(--cream3)}
+  textarea::placeholder{font-size:14px;color:#B8B0A4}
+
+  /* 마지막 카드 */
+  .fc-inner{padding:1.25rem}
+  .fc-eyebrow{font-size:11px}
   .fc-title{font-size:18px}
+  .final-card textarea::placeholder{color:rgba(255,255,255,.4)}
+
+  /* 버튼 — 세로 배치로 탭 영역 확보 */
+  .btn-row{flex-direction:column;align-items:stretch}
+  .btn-pdf,.btn-clear{justify-content:center;font-size:14px;padding:15px 20px}
+
+  /* 푸터 */
   .footer-hint{font-size:12px;font-weight:400;color:var(--ink2)}
 }
 @media print{
