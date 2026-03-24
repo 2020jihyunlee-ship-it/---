@@ -18,6 +18,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased}
 .wrap{max-width:700px;margin:0 auto;padding:4rem 2rem 7rem}
+@media(max-width:480px){.wrap{padding:2.5rem 1.25rem 6rem}}
 .hd{text-align:center;margin-bottom:3.5rem}
 .hd-orn{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:1.5rem}
 .hd-orn-line{height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
@@ -29,10 +30,11 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-fo
 .hd-title-kr{font-family:var(--serif-kr);font-size:clamp(18px,3.5vw,26px);font-weight:600;color:var(--ink2);letter-spacing:.02em;margin-bottom:1.25rem}
 .hd-sub{font-size:13px;font-weight:300;color:var(--ink4);line-height:1.9;max-width:400px;margin:0 auto 1rem}
 .info-row{display:grid;grid-template-columns:1fr 160px;gap:12px;margin-bottom:2.5rem}
+@media(max-width:480px){.info-row{grid-template-columns:1fr 1fr}}
 .info-field{position:relative;background:#fff;border:1px solid var(--cream3);border-radius:2px;padding:14px 18px 10px;transition:border-color .2s}
 .info-field::after{content:'';position:absolute;bottom:-1px;left:50%;width:0;height:1px;background:var(--gold);transform:translateX(-50%);transition:width .3s}
 .info-field:focus-within::after{width:100%}
-.info-label{font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;display:block}
+.info-label{font-size:9.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .info-input{width:100%;border:none;outline:none;font-family:var(--serif-kr);font-size:15px;font-weight:600;color:var(--ink);background:transparent}
 .info-input::placeholder{font-family:var(--sans);font-weight:300;font-size:13px;color:var(--cream3)}
 .prog-wrap{margin-bottom:3rem;display:flex;align-items:center;gap:14px}
