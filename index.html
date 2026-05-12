@@ -25,7 +25,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.8}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.8;word-break:keep-all}
 
 /* ══ 표지 ══ */
 .cover{
@@ -98,8 +98,8 @@ body{font-family:var(--sans);background:var(--cream);color:var(--ink);-webkit-fo
 .promise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
 .promise-item{background:rgba(255,255,255,.03);padding:1.5rem 1.25rem;text-align:center}
 .promise-num{font-family:var(--serif-en);font-size:28px;font-weight:600;font-style:italic;color:var(--gold);opacity:.4;line-height:1;margin-bottom:.75rem}
-.promise-text{font-size:13px;font-weight:400;color:rgba(255,255,255,.6);line-height:1.75}
-.promise-text strong{display:block;font-family:var(--serif-kr);font-size:14px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:.3rem}
+.promise-text{font-size:13px;font-weight:400;color:rgba(255,255,255,.6);line-height:1.75;word-break:keep-all;keep-all:keep-all}
+.promise-text strong{display:block;font-family:var(--serif-kr);font-size:14px;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:.3rem;word-break:keep-all}
 
 /* ══ 공감 ══ */
 .empathy{padding:5rem 0}
