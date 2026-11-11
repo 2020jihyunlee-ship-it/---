@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://self-directed-template.vercel.app/sitemap.xml
